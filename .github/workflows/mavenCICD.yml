@@ -1,4 +1,4 @@
-name: Maven Action Workflow DBL 
+ho name: Maven Action Workflow DBL 
 on:
   workflow_call:
   push:
@@ -55,7 +55,7 @@ jobs:
           ls -al
           REPO_NAME="${{env.repoName}}"
           echo "$REPO_NAME.properties"
-          ${{buildCmd}}
+          echo "${{env.buildCmd}}"
     - name: Build output statements
       run: |
         echo "Build with Maven completed successfully..."
