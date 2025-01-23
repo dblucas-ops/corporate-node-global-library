@@ -1,6 +1,15 @@
 name: Maven Action Workflow DBL 
 on:
   workflow_call:
+    inputs:
+      callerRepo:
+        description: "callerRepo"
+        required: true
+        type: string
+      buildCmd:
+        description: "nbuildCmd"
+        required: true
+        type: string
   push:
     branches:
       - main
