@@ -17,6 +17,9 @@ on:
 env:
   MY_CONTEXT: "Local variable: File scope to all jobs within the yml file"
   REPO_NAME: ""
+  CALLER_REPO: ${{ inputs.service }}
+  BUILD_CMD: ${{ inputs.buildCmd }}
+  BRANCH_NAME: ${{ inputs.branchName }}
 jobs:
   init:
     runs-on: ubuntu-latest
@@ -40,7 +43,7 @@ jobs:
     needs: codeql
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@${{ inputs.callerRepo }}
+    - uses: actions/checkout@$CALLER_REPO
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
@@ -51,12 +54,9 @@ jobs:
         settings-path: ${{ github.workspace }}
     - name: Build with Maven
       run: |
-          REPO_NAME = ${{ inputs.callerRepo }}
-          BUILD_CMD = $inputs.buildCmd
-          BRANCH =  $inputs.branchName
           echo "$REPO_NAME"
           echo "$BUILD_CMD"
-          echo "$BRANCH"          
+          echo "$BRANCH_NAME"          
     - name: Build output statements
       run: |
         echo "Build with Maven completed successfully..."
