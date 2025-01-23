@@ -28,6 +28,10 @@ jobs:
         run: |
           echo "Initialization and Configuration:"
           echo "$(date +'%Y-%m-%d %H:%M:%S')"
+          echo "DUMP VARS"
+          echo "${{env.CALLER_REPO}}"
+          echo "${{env.BUILD_CMD}}"
+          echo "${{env.BRANCH_NAME}}"
   codeql:
     needs: init
     runs-on: ubuntu-latest
