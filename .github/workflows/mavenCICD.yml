@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@call-global-library
+        uses: actions/checkout@v4
         with:
           repository: dblucas-ops/${{ env.CALLER_REPO }}
   faux_deploy:
