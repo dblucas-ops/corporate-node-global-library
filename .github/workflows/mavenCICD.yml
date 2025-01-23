@@ -16,7 +16,6 @@ on:
         type: string
 env:
   MY_CONTEXT: "Local variable: File scope to all jobs within the yml file"
-  REPO_NAME: ""
   CALLER_REPO: ${{ inputs.callerRepo }}
   BUILD_CMD: ${{ inputs.buildCmd }}
   BRANCH_NAME: ${{ inputs.branchName }}
@@ -30,7 +29,8 @@ jobs:
           echo "Initialization and Configuration:"
           echo "$(date +'%Y-%m-%d %H:%M:%S')"
           echo "Caller Repo:"
-          echo "$env.CALLER_REPO"
+          echo "${env.CALLER_REPO}"
+          echo "${{env.CALLER_REPO}}"
   codeql:
     needs: init
     runs-on: ubuntu-latest
