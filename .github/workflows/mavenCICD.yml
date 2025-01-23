@@ -62,9 +62,9 @@ jobs:
         settings-path: ${{ github.workspace }}
     - name: Build with Maven
       run: |
-          REPO_NAME = "${{inputs.callerRepo}}"
-          BUILD_CMD = "${{inputs.buildCmd}}"
-          BRANCH =  "${{inputs.branchName}}"
+          REPO_NAME = $inputs.callerRepo
+          BUILD_CMD = $inputs.buildCmd
+          BRANCH =  $inputs.branchName
           echo "$REPO_NAME"
           echo "$BUILD_CMD"
           echo "$BRANCH"          
