@@ -62,17 +62,15 @@ jobs:
         settings-path: ${{ github.workspace }}
     - name: Build with Maven
       run: |
-          ls -al
-          REPO_NAME="${{env.repoName}}"
-          echo "$REPO_NAME.properties"
-          echo "${{env.buildCmd}}"
+          REPO_NAME = "${{inputs.callerRepo}}"
+          BUILD_CMD = "${{inputs.buildCmd}}"
+          BRANCH =  "${{inputs.branchName}}"
+          echo "$REPO_NAME"
+          echo "$BUILD_CMD"
+          echo "$BRANCH"          
     - name: Build output statements
       run: |
         echo "Build with Maven completed successfully..."
-        echo "REPO_NAME=${GITHUB_REPOSITORY#$GITHUB_REPOSITORY_OWNER/}" >> $GITHUB_ENV
-        REPO_NAME=${GITHUB_REPOSITORY#$GITHUB_REPOSITORY_OWNER/}
-        CONFIGS=`cat ${{ github.workspace }}/$REPO_NAME.properties`
-        echo "$CONFIGS" >> $GITHUB_ENV
   faux_deploy:
     needs: build
     runs-on: ubuntu-latest
