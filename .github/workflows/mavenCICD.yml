@@ -52,14 +52,10 @@ jobs:
         settings-path: ${{ github.workspace }}
     - name: Build with Maven
       run: |
-          echo "REPO_NAME=${GITHUB_REPOSITORY#$GITHUB_REPOSITORY_OWNER/}" >> $GITHUB_ENV
-          REPO_NAME=${GITHUB_REPOSITORY#$GITHUB_REPOSITORY_OWNER/}
-          echo "$REPO_NAME.properties"
-          CONFIGS=`cat ${{ github.workspace }}/$REPO_NAME.properties`
-          echo "$CONFIGS" >> $GITHUB_ENV
-          pwd
           ls -al
-          mvn -file pom.xml install -Denv.build.num=1234 -Denv.change.set.num=1234frtt
+          REPO_NAME="${{env.repoName}}"
+          echo "$REPO_NAME.properties"
+          ${{buildCmd}}
     - name: Build output statements
       run: |
         echo "Build with Maven completed successfully..."
