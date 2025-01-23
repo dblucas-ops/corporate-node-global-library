@@ -29,7 +29,6 @@ jobs:
           echo "Initialization and Configuration:"
           echo "$(date +'%Y-%m-%d %H:%M:%S')"
           echo "Caller Repo:"
-          echo "${env.CALLER_REPO}"
           echo "${{env.CALLER_REPO}}"
   codeql:
     needs: init
