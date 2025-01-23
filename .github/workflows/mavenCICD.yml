@@ -44,7 +44,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: dblucas-ops/${{ env.CALLER_REPO }}
-  faux_deploy:
+      - name: Build with Maven
+        run: |
+          echo "Build with Maven"
+          mvn install
+   faux_deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
