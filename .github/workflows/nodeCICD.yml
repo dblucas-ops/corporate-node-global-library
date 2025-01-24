@@ -44,10 +44,10 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: dblucas-ops/${{ env.CALLER_REPO }}
-      - name: Build with Maven
+      - name: Build with npm
         run: |
-          echo "Build with Maven"
-          mvn -file pom.xml install -Denv.build.num=1234 -Denv.change.set.num=1234frtt
+          echo "Build with npm"
+          npm
   post_action:
     needs: build
     runs-on: ubuntu-latest
