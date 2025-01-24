@@ -47,7 +47,7 @@ jobs:
       - name: Build with npm
         run: |
           echo "Build with npm"
-          npm
+          ${{ env.BUILD_CMD }}
   post_action:
     needs: build
     runs-on: ubuntu-latest
